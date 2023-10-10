@@ -53,6 +53,8 @@ class ViewController: UIViewController {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
         resultViewController.setLabelText(id: idText, pw: passwordText)
         resultViewController.getDataDelegate = self
+        
+        /// 클로저 방식
 //        resultViewController.loginDataCompletion = { data in
 //            print("클로저로 받아온 email : \(data[0]), 클로저로 받아온 password : \(data[1])")
 //        }
@@ -63,6 +65,7 @@ class ViewController: UIViewController {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
         resultViewController.setLabelText(id: idText, pw: passwordText)
         resultViewController.getDataDelegate = self
+        /// 클로저 방식
 //        resultViewController.loginDataCompletion = { data in
 //            print("클로저로 받아온 email : \(data[0]), 클로저로 받아온 password : \(data[1])")
 //        }
@@ -72,8 +75,8 @@ class ViewController: UIViewController {
 
 extension ViewController: GetDataProtocol {
     func getLoginData(id: String, password: String) {
-//        self.recentIDLabel.text = "ID: \(id)"
-//        self.recentPWLabel.text = "PW: \(password)"
+        self.recentIDLabel.text = "ID: \(id)"
+        self.recentPWLabel.text = "PW: \(password)"
     }
 }
 
