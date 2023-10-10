@@ -50,6 +50,9 @@ class ViewController: UIViewController {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
         resultViewController.setLabelText(id: idText, pw: passwordText)
         resultViewController.getDataDelegate = self
+//        resultViewController.loginDataCompletion = { data in
+//            print("클로저로 받아온 email : \(data[0]), 클로저로 받아온 password : \(data[1])")
+//        }
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
@@ -57,6 +60,9 @@ class ViewController: UIViewController {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
         resultViewController.setLabelText(id: idText, pw: passwordText)
         resultViewController.getDataDelegate = self
+//        resultViewController.loginDataCompletion = { data in
+//            print("클로저로 받아온 email : \(data[0]), 클로저로 받아온 password : \(data[1])")
+//        }
         self.present(resultViewController, animated: true)
     }
 }

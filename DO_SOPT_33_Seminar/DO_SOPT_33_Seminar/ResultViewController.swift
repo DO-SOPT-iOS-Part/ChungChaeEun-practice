@@ -12,6 +12,7 @@ class ResultViewController: UIViewController {
     var idText = ""
     var pwText = ""
     var getDataDelegate: GetDataProtocol?
+    var loginDataCompletion: (([String]) -> Void)?
     
     @IBOutlet weak var PWResultLabel: UILabel!
     @IBOutlet weak var IDResultLabel: UILabel!
@@ -29,6 +30,9 @@ class ResultViewController: UIViewController {
         }
         
         getDataDelegate?.getLoginData(id: self.idText, password: self.pwText)
+        
+//        guard let loginDataCompletion else {return}
+//        loginDataCompletion([self.idText, self.pwText])
     }
     
     private func bindText() {
