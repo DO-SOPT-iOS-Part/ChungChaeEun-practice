@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     @IBAction func idTextFieldChanged(_ sender: Any) {
         guard let textField = sender as? UITextField else {return}
         if let idText = textField.text {
