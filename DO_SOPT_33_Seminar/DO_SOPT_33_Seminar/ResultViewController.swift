@@ -14,8 +14,8 @@ class ResultViewController: UIViewController {
     var getDataDelegate: GetDataProtocol?
     var loginDataCompletion: (([String]) -> Void)?
     
-    @IBOutlet weak var PWResultLabel: UILabel!
     @IBOutlet weak var IDResultLabel: UILabel!
+    @IBOutlet weak var PWResultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,8 @@ class ResultViewController: UIViewController {
     }
     
     private func bindText() {
-        self.IDResultLabel.text = "ID: \(idText)"
-        self.PWResultLabel.text = "PW: \(pwText)"
+        self.IDResultLabel.text = "Nice to Meet You, \(idText)!"
+        self.PWResultLabel.text = "and your password is \(pwText), right?"
     }
     
     func setLabelText(id: String, pw: String) {
@@ -45,3 +45,4 @@ class ResultViewController: UIViewController {
         self.pwText = pw
     }
 }
+

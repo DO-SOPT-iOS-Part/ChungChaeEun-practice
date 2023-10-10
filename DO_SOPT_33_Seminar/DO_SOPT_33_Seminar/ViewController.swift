@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     private var idText: String = ""
     private var passwordText: String = ""
     
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var modeLabel: UILabel!
+    @IBOutlet weak var modeSwitch: UISwitch!
     
     @IBOutlet weak var recentIDLabel: UILabel!
     @IBOutlet weak var recentPWLabel: UILabel!
@@ -32,7 +35,7 @@ class ViewController: UIViewController {
         print("아이디 입력 완료")
     }
     
-    @IBAction func loginTextFieldChanged(_ sender: Any) {
+    @IBAction func pwTextFieldChanged(_ sender: Any) {
         guard let textField = sender as? UITextField else {return}
         if let passwordText = textField.text {
             self.passwordText = passwordText
@@ -69,8 +72,8 @@ class ViewController: UIViewController {
 
 extension ViewController: GetDataProtocol {
     func getLoginData(id: String, password: String) {
-        self.recentIDLabel.text = "ID: \(id)"
-        self.recentPWLabel.text = "PW: \(password)"
+//        self.recentIDLabel.text = "ID: \(id)"
+//        self.recentPWLabel.text = "PW: \(password)"
     }
 }
 
