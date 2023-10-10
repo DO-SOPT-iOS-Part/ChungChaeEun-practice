@@ -9,8 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    static let chaentopiaBlue: UIColor = UIColor(red: 76/255, green: 151/255, blue: 196/255, alpha: 1.0)
+    static let chaentopiaPink: UIColor = UIColor(red: 238/255, green: 125/255, blue: 177/255, alpha: 1.0)
+    
     private var idText: String = ""
     private var passwordText: String = ""
+    var isPink = true
     
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var idTextField: UITextField!
@@ -58,6 +62,8 @@ class ViewController: UIViewController {
 //        resultViewController.loginDataCompletion = { data in
 //            print("클로저로 받아온 email : \(data[0]), 클로저로 받아온 password : \(data[1])")
 //        }
+        resultViewController.isPink = self.isPink
+        
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
@@ -69,7 +75,25 @@ class ViewController: UIViewController {
 //        resultViewController.loginDataCompletion = { data in
 //            print("클로저로 받아온 email : \(data[0]), 클로저로 받아온 password : \(data[1])")
 //        }
+        
+        resultViewController.isPink = self.isPink
+        
         self.present(resultViewController, animated: true)
+    }
+    
+    @IBAction func switchValueChanged(_ sender: Any) {
+
+        if isPink {
+            modeSwitch.onTintColor = ViewController.chaentopiaBlue
+            loginLabel.textColor = ViewController.chaentopiaBlue
+            loginButton.backgroundColor = ViewController.chaentopiaBlue
+        } else {
+            modeSwitch.onTintColor = ViewController.chaentopiaPink
+            loginLabel.textColor = ViewController.chaentopiaPink
+            loginButton.backgroundColor = ViewController.chaentopiaPink
+        }
+        
+        self.isPink.toggle()
     }
 }
 
