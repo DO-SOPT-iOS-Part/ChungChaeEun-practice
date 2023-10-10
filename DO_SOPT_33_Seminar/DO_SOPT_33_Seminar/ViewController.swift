@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    
+    @IBOutlet weak var recentIDLabel: UILabel!
+    @IBOutlet weak var recentPWLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -39,19 +43,28 @@ class ViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         print("로그인 버튼\n\(idText)\n\(passwordText)")
         
-        presentToResultVC()
+        pushToResultVC()
     }
     
     func pushToResultVC() {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
         resultViewController.setLabelText(id: idText, pw: passwordText)
+        resultViewController.getDataDelegate = self
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
     func presentToResultVC() {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
         resultViewController.setLabelText(id: idText, pw: passwordText)
+        resultViewController.getDataDelegate = self
         self.present(resultViewController, animated: true)
+    }
+}
+
+extension ViewController: GetDataProtocol {
+    func getLoginData(id: String, password: String) {
+        self.recentIDLabel.text = "ID: \(id)"
+        self.recentPWLabel.text = "PW: \(password)"
     }
 }
 

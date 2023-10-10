@@ -11,6 +11,7 @@ class ResultViewController: UIViewController {
     
     var idText = ""
     var pwText = ""
+    var getDataDelegate: GetDataProtocol?
     
     @IBOutlet weak var PWResultLabel: UILabel!
     @IBOutlet weak var IDResultLabel: UILabel!
@@ -26,6 +27,8 @@ class ResultViewController: UIViewController {
         } else {
             self.dismiss(animated: true)
         }
+        
+        getDataDelegate?.getLoginData(id: self.idText, password: self.pwText)
     }
     
     private func bindText() {

@@ -95,7 +95,7 @@
                                     <action selector="loginTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="cni-gt-wRA"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhl-0o-NiY">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhl-0o-NiY">
                                 <rect key="frame" x="162" y="352" width="69" height="32"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="로그인"/>
@@ -103,22 +103,52 @@
                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lSc-ZL-IJu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 로그인 기록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9a-9Q-75d">
+                                <rect key="frame" x="140" y="443" width="111.66666666666669" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="knd-wQ-eHH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-mp-IvD">
+                                <rect key="frame" x="98.666666666666671" y="514" width="194.33333333333331" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PW: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-27-Ayf">
+                                <rect key="frame" x="100" y="555" width="193" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Rq7-4k-2xc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="7ae-a2-t62"/>
+                            <constraint firstItem="yxD-27-Ayf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="82h-Gr-5cU"/>
                             <constraint firstItem="Rq7-4k-2xc" firstAttribute="top" secondItem="96d-fg-C4w" secondAttribute="bottom" constant="70" id="AY5-Ik-0pj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rq7-4k-2xc" secondAttribute="trailing" constant="50" id="BWm-SF-oEh"/>
                             <constraint firstItem="t6b-xM-M6e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="C3n-kx-aGV"/>
+                            <constraint firstItem="s9a-9Q-75d" firstAttribute="centerX" secondItem="1oE-mp-IvD" secondAttribute="centerX" id="Cbh-Wx-M9u"/>
                             <constraint firstItem="t6b-xM-M6e" firstAttribute="top" secondItem="Rq7-4k-2xc" secondAttribute="bottom" constant="30" id="H3f-bm-5f1"/>
                             <constraint firstItem="t6b-xM-M6e" firstAttribute="centerX" secondItem="Rhl-0o-NiY" secondAttribute="centerX" id="MDl-sT-ygT"/>
                             <constraint firstItem="Rhl-0o-NiY" firstAttribute="top" secondItem="t6b-xM-M6e" secondAttribute="bottom" constant="29" id="PC2-Tc-vQA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yxD-27-Ayf" secondAttribute="trailing" constant="100" id="Qu5-qk-QqQ"/>
                             <constraint firstItem="96d-fg-C4w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="SYj-CN-OZ3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="96d-fg-C4w" secondAttribute="trailing" constant="50" id="WwY-Qb-c4l"/>
+                            <constraint firstAttribute="bottom" secondItem="s9a-9Q-75d" secondAttribute="bottom" constant="388" id="d9Z-yS-eaG"/>
+                            <constraint firstItem="s9a-9Q-75d" firstAttribute="top" secondItem="Rhl-0o-NiY" secondAttribute="bottom" constant="59" id="fih-aa-W34"/>
+                            <constraint firstItem="yxD-27-Ayf" firstAttribute="top" secondItem="1oE-mp-IvD" secondAttribute="bottom" constant="20" id="h7h-x1-R6G"/>
+                            <constraint firstItem="1oE-mp-IvD" firstAttribute="top" secondItem="s9a-9Q-75d" secondAttribute="bottom" constant="50" id="mb9-T0-ueG"/>
                             <constraint firstItem="Rq7-4k-2xc" firstAttribute="top" secondItem="96d-fg-C4w" secondAttribute="bottom" constant="70" id="sYS-Qx-Ysn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6b-xM-M6e" secondAttribute="trailing" constant="50" id="unW-IS-ROe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1oE-mp-IvD" secondAttribute="trailing" constant="100" id="wD4-uH-izA"/>
                             <constraint firstItem="96d-fg-C4w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="yhf-Hd-GIc"/>
+                            <constraint firstItem="s9a-9Q-75d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="zs9-Kp-bNh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Me8-cz-NUB"/>
@@ -127,6 +157,8 @@
                         <outlet property="loginButton" destination="Rhl-0o-NiY" id="Zdb-oU-08y"/>
                         <outlet property="loginLabel" destination="96d-fg-C4w" id="TmQ-Fi-WnD"/>
                         <outlet property="pwTextField" destination="t6b-xM-M6e" id="J9g-s1-k8A"/>
+                        <outlet property="recentIDLabel" destination="1oE-mp-IvD" id="0Mm-3E-LmX"/>
+                        <outlet property="recentPWLabel" destination="yxD-27-Ayf" id="lEU-Eq-mwl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
