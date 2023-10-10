@@ -20,14 +20,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-//    @IBAction func idTextFieldChanged(_ sender: Any) {
-//        guard let textField = sender as? UITextField else {return}
-//        if let idText = textField.text {
-//            self.idText = idText
-//        }
-//        print("아이디 입력 완료")
-//    }
-    
     @IBAction func idTextFieldChanged(_ sender: Any) {
         guard let textField = sender as? UITextField else {return}
         if let idText = textField.text {
@@ -45,14 +37,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        print("\(idText)\n\(passwordText)")
+        print("로그인 버튼\n\(idText)\n\(passwordText)")
         
-        pushToResultVC()
+        presentToResultVC()
     }
     
     func pushToResultVC() {
         guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
+        resultViewController.setLabelText(id: idText, pw: passwordText)
         self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
+    
+    func presentToResultVC() {
+        guard let resultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
+        resultViewController.setLabelText(id: idText, pw: passwordText)
+        self.present(resultViewController, animated: true)
     }
 }
 
