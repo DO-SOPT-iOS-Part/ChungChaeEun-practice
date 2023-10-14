@@ -8,22 +8,63 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-
+    
+    var firstDot: UIView = {
+        let view = UIView(frame: .init(origin: .zero, size: .init(width: 20, height: 20)))
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    var secondDot: UIView = {
+        let view = UIView(frame: .init(origin: .zero, size: .init(width: 20, height: 20)))
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    var defenseView: UIView = {
+        let view = UIView(frame: .init(origin: .zero, size: .init(width: 20, height: 120)))
+        view.backgroundColor = .blue
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
+    }
 
-        // Do any additional setup after loading the view.
+    private func setUI() {
+        setStyle()
+        setLayout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setStyle() {
+        self.view.backgroundColor = .white
     }
-    */
-
+    
+    private func setLayout() {
+        [firstDot, secondDot, defenseView].forEach { [weak self] view in
+            guard let self else { return }
+            view.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(view)
+        }
+        
+        NSLayoutConstraint.activate([firstDot.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40),
+                                     firstDot.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
+                                     firstDot.widthAnchor.constraint(equalToConstant: 20),
+                                     firstDot.heightAnchor.constraint(equalToConstant: 20)])
+        
+        NSLayoutConstraint.activate([secondDot.topAnchor.constraint(equalTo: self.firstDot.bottomAnchor, constant: 40),
+                                   secondDot.leadingAnchor.constraint(equalTo: self.firstDot.trailingAnchor, constant: 20),
+                                   secondDot.widthAnchor.constraint(equalToConstant: 20),
+                                   secondDot.heightAnchor.constraint(equalToConstant: 20)])
+        
+        NSLayoutConstraint.activate([defenseView.topAnchor.constraint(equalTo: self.secondDot.bottomAnchor, constant: 20),
+                                     defenseView.leadingAnchor.constraint(equalTo: self.secondDot.trailingAnchor, constant: 20),
+                                     defenseView.widthAnchor.constraint(equalToConstant: 120),
+                                     defenseView.heightAnchor.constraint(equalToConstant: 20)])
+    }
 }
