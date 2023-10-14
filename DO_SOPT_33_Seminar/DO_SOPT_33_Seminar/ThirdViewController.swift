@@ -10,26 +10,25 @@ import UIKit
 class ThirdViewController: UIViewController {
     
     var firstView: UIView = {
-//        let view = UIView(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 4)))
         let view = UIView()
         view.backgroundColor = .yellow
         return view
     }()
     
     var secondView: UIView = {
-        let view = UIView(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 4)))
+        let view = UIView()
         view.backgroundColor = .green
         return view
     }()
     
     var thirdView: UIView = {
-        let view = UIView(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 4)))
+        let view = UIView()
         view.backgroundColor = .black
         return view
     }()
     
     var fourthView: UIView = {
-        let view = UIView(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 4)))
+        let view = UIView()
         view.backgroundColor = .blue
         return view
     }()
