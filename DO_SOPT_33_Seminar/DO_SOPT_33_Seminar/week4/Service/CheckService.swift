@@ -12,7 +12,8 @@ class CheckService {
     private init() {}
     
     func makeRequest(username: String) -> URLRequest {
-        let url = URL(string: "http://3.39.54.196/api/v1/members/check?username=\(username)")!
+        let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
+        let url = URL(string: baseURL + "/members/check?username=\(username)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let header = ["Content-Type": "application/json"]

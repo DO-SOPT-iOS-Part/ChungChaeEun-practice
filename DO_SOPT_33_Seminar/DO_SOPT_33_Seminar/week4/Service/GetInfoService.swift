@@ -12,7 +12,8 @@ class GetInfoService {
     private init() {}
     
     func makeRequest(userId: Int) -> URLRequest {
-        let url = URL(string: "http://3.39.54.196/api/v1/members/\(userId)")!
+        let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
+        let url = URL(string: baseURL + "/members/\(userId)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let header = ["Content-Type": "application/json"]
