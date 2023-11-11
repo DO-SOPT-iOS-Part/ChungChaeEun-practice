@@ -35,12 +35,31 @@ class LoginViewController: UIViewController {
                     alert.addAction(okAction)
                     self.present(alert, animated: true)
                 } else {
-                    let alert = UIAlertController(title: "계정생성 실패", message: "흑흑", preferredStyle: UIAlertController.Style.alert)
+                    checkUserName()
+                }
+                print(status)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func checkUserName()  {
+        Task {
+            do {
+                let isExist = try await CheckService.shared.GetRegisterData(username: self.userName)
+                
+                if isExist == true {
+                    let alert = UIAlertController(title: "중복된 계정", message: "이미 있는 아이디예요", preferredStyle: UIAlertController.Style.alert)
+                    let okAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "계정생성 실패", message: "알 수 없는 오류가 발생했어요.", preferredStyle: UIAlertController.Style.alert)
                     let okAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
                     alert.addAction(okAction)
                     self.present(alert, animated: true)
                 }
-                print(status)
             } catch {
                 print(error)
             }
