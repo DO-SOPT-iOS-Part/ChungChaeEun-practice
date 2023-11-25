@@ -41,6 +41,24 @@ class AnimationViewController: UIViewController {
         }
     }
     
+    private func setAnimation() {
+        if self.clickCount > 5 {
+            self.activityIndicator.startAnimating()
+            self.activityIndicator.isHidden = false
+            return
+        }
+        let randomX = CGFloat.random(in: 0 ... UIScreen.main.bounds.width - self.startButton.bounds.size.width)
+        let randomY = CGFloat.random(in: 0 ... UIScreen.main.bounds.height - self.startButton.bounds.size.height)
+        
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn]) {
+            self.startButton.frame = .init(origin: .init(x: randomX, y: randomY),
+                                           size: self.startButton.bounds.size)
+        } completion: { _ in
+            self.clickCount += 1
+        }
+    }
+    
+    
     private let activityIndicator = UIActivityIndicatorView().then {
         $0.color = .black
         $0.hidesWhenStopped = true
@@ -48,8 +66,9 @@ class AnimationViewController: UIViewController {
     }
     
     @objc private func startButtonTap() {
-        self.activityIndicator.startAnimating()
-        self.activityIndicator.isHidden = false
+//        self.activityIndicator.startAnimating()
+//        self.activityIndicator.isHidden = false
+        setAnimation()
     }
     
     @objc private func pauseButtonTap() {
