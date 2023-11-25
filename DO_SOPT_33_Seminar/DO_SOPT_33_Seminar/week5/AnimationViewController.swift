@@ -58,6 +58,9 @@ class AnimationViewController: UIViewController {
     }
     
     private lazy var startButton = UIButton().then {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(startButtonTap))
+        $0.addGestureRecognizer(gesture)
+        $0.isUserInteractionEnabled = true
         $0.addTarget(self,
                      action: #selector(startButtonTap),
                      for: .touchUpInside)
