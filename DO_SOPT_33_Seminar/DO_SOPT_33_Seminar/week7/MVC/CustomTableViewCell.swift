@@ -12,7 +12,6 @@ import Then
 
 class CustomTableViewCell: UITableViewCell {
     static let identifier: String = "CustomTVC"
-    var buttonTapCompletion: ((Int) -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,18 +23,20 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func setData(name: String,
+                 isWinning: Bool,
                  age: Int) {
         self.nameLabel.text = name
         self.ageLabel.text = "\(age)"
-    }
-    
-    @objc private func buttonTap(_ sender: UIStepper) {
-        guard let buttonTapCompletion else {return}
-        buttonTapCompletion(Int.random(in: 1...49))
+        
+        if isWinning {
+            self.isWinningLable.text = "당첨!"
+        } else {
+            self.isWinningLable.text = ""
+        }
     }
     
     private func setLayout() {
-        [nameLabel, ageLabel, randomAgeButton].forEach {
+        [nameLabel, ageLabel, isWinningLable].forEach {
             self.contentView.addSubview($0)
         }
         
@@ -43,14 +44,12 @@ class CustomTableViewCell: UITableViewCell {
             $0.leading.equalToSuperview().offset(16)
             $0.top.bottom.equalToSuperview().inset(12)
         }
-        
-        randomAgeButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalTo(nameLabel)
+        isWinningLable.snp.makeConstraints {
+            $0.leading.equalTo(nameLabel.snp.trailing).offset(16)
+            $0.centerY.equalToSuperview()
         }
-        
         ageLabel.snp.makeConstraints {
-            $0.trailing.equalTo(randomAgeButton.snp.leading).offset(-12)
+            $0.trailing.equalToSuperview().offset(-16)
             $0.centerY.equalTo(nameLabel)
         }
     }
@@ -63,11 +62,8 @@ class CustomTableViewCell: UITableViewCell {
         $0.font = .systemFont(ofSize: 16)
         $0.textColor = .black
     }
-    private lazy var randomAgeButton = UIButton().then {
-        $0.setTitle("나이 재설정", for: .normal)
-        $0.setTitleColor(UIColor.black, for: .normal)
-        $0.addTarget(self,
-                     action: #selector(buttonTap(_:)),
-                     for: .touchUpInside)
+    private let isWinningLable = UILabel().then {
+        $0.font = .systemFont(ofSize: 16)
+        $0.textColor = .black
     }
 }
