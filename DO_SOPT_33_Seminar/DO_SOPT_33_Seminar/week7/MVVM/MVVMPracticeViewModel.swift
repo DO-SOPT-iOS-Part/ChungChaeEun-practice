@@ -8,7 +8,7 @@
 import UIKit
 
 final class MVVMPracticeViewModel: NSObject {
-    var soptModel: [SoptMember] = [SoptMember(name: "류희재", winning: false, age: 24),
+    var soptModel: Observable<[SoptMember]> = Observable([SoptMember(name: "류희재", winning: false, age: 24),
                                    SoptMember(name: "강민수", winning: false, age: 24),
                                    SoptMember(name: "고아라", winning: false, age: 23),
                                    SoptMember(name: "곽성준", winning: false, age: 24),
@@ -36,25 +36,25 @@ final class MVVMPracticeViewModel: NSObject {
                                    SoptMember(name: "전효원", winning: false, age: 23),
                                    SoptMember(name: "정채은", winning: false, age: 23),
                                    SoptMember(name: "최서연", winning: false, age: 23),
-                                   SoptMember(name: "최효리", winning: false, age: 23)]
+                                   SoptMember(name: "최효리", winning: false, age: 23)])
     
-    func randomButtonTapped() -> Bool {
-        let randomIndex = Int.random(in: 0 ... self.soptModel.count - 1)
-        self.soptModel[randomIndex].winning = true
-        return true
+    func randomButtonTapped() {
+        let randomIndex = Int.random(in: 0 ... self.soptModel.value.count - 1)
+        self.soptModel.value[randomIndex].winning = true
+//        return true
     }
 }
 
 extension MVVMPracticeViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return soptModel.count
+        return soptModel.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
-        cell.setData(name: soptModel[indexPath.row].name,
-                     isWinning: soptModel[indexPath.row].winning,
-                     age: soptModel[indexPath.row].age)
+        cell.setData(name: soptModel.value[indexPath.row].name,
+                     isWinning: soptModel.value[indexPath.row].winning,
+                     age: soptModel.value[indexPath.row].age)
         return cell
     }
 }

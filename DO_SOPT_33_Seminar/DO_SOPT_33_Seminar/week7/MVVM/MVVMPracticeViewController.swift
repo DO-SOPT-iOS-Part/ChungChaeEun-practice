@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class MVVMPracticeViewController: UIViewController {
     
     var viewModel = MVVMPracticeViewModel()
@@ -34,12 +37,14 @@ class MVVMPracticeViewController: UIViewController {
     
     private func bindViewModel() {
         self.tableView.dataSource = viewModel
+        self.viewModel.soptModel.bind { [weak self] _ in
+            guard let self else { return }
+            self.tableView.reloadData()
+        }
     }
     
     @objc private func randomButtonTap() {
-        if viewModel.randomButtonTapped() {
-            self.tableView.reloadData()
-        }
+        viewModel.randomButtonTapped()
     }
     
     private lazy var randomButton = UIButton().then {
